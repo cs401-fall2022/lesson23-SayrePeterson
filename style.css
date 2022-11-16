@@ -1,0 +1,10 @@
+.header{
+    background: blue;
+}
+
+.other-entries{
+    background-color:orangered;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
