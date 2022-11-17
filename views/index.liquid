@@ -4,9 +4,19 @@
 <title>Boise State Blog</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="views\style.css">
 <style>
-body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+.header{
+  background: blue;
+}
+
+.other-entries{
+  background-color:orangered;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
 </style>
 </head>
 <body class="body">
@@ -49,25 +59,45 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         totam ratione voluptas quod exercitationem fuga. Possimus quis earum veniam 
         quasi aliquam eligendi, placeat qui corporis!</p>
         <hr>
+        <!-- Other blog entries -->
         <div class = "other-entries">
          <h2>More posts</h2> 
-         <br>
-         another post<br>
-         another post<br>
-         another post<br>
-         another post<br>
-         another post<br>
-         ...
+         <ul>
+            {% for txt in data%}
+            <ul>{{txt.blog_id}} - {{txt.blog_txt}}  </ul>
+            {% endfor%}
+        </ul>
+
+        <hr>
+        <h2>Add stuff</h2>
+        <form action="/add" method="POST">
+            <div>
+                <label for="blog">What is your blog txt?</label>
+                <input name="blog" id="blog" value="Hi this is my blog text!" />
+            </div>
+            <div>
+                <button>Send my blog</button>
+            </div>
+        </form>
+        <hr>
+        <h2>Delete stuff</h2>
+                <form action="/delete" method="POST">
+            <div>
+                <label for="blog">Blog to delete?</label>
+                <input name="blog" id="blog" value="1" />
+            </div>
+            <div>
+                <button>delete my blog</button>
+            </div>
+        </form>
         </div>
     </div>
   </div>
 </div>
-
-
-<!-- Other blog entries -->
-
 </div>
 </div>
 </div>
 </body>
+        
+    </body>
 </html>
