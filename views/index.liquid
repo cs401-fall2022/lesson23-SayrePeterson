@@ -1,103 +1,97 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Boise State Blog</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="views\style.css">
-<style>
-.header{
-  background: blue;
-}
+  <head>
+    <title>Boise State Blog</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="views\style.css">
+    <style>
+      .header {
+        background: blue;
+      }
 
-.other-entries{
-  background-color:orangered;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-}
+      .other-entries {
+        background-color: orangered;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body class="body">
 
-</style>
-</head>
-<body class="body">
+    <div class="div" style="max-width:1400px">
 
-<div class="div" style="max-width:1400px">
+      <!-- Header -->
+      <header class="header">
+        <h1>
+          <b>Boise State Blog</b>
+        </h1>
+      </header>
 
-<!-- Header -->
-<header class="header"> 
-  <h1><b>Boise State Blog</b></h1>
-</header>
-
-<!-- Blog entries -->
-<div class="entry">
-  <!-- Blog entry -->
-  <div class="entry">
-    <div class="title-containter">
-      <h3><b>TITLE HEADING</b></h3>
-      <h5>Title description, <span class="title description">November 15, 2022</span></h5>
-    </div>
-    <div class="post-container">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-        molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-        numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-        optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
-        obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-        nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-        tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
-        quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos 
-        sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam
-        recusandae alias error harum maxime adipisci amet laborum. Perspiciatis 
-        minima nesciunt dolorem! Officiis iure rerum voluptates a cumque velit 
-        quibusdam sed amet tempora. Sit laborum ab, eius fugit doloribus tenetur 
-        fugiat, temporibus enim commodi iusto libero magni deleniti quod quam 
-        consequuntur! Commodi minima excepturi repudiandae velit hic maxime
-        doloremque. Quaerat provident commodi consectetur veniam similique ad 
-        earum omnis ipsum saepe, voluptas, hic voluptates pariatur est explicabo 
-        fugiat, dolorum eligendi quam cupiditate excepturi mollitia maiores labore 
-        suscipit quas? Nulla, placeat. Voluptatem quaerat non architecto ab laudantium
-        modi minima sunt esse temporibus sint culpa, recusandae aliquam numquam 
-        totam ratione voluptas quod exercitationem fuga. Possimus quis earum veniam 
-        quasi aliquam eligendi, placeat qui corporis!</p>
-        <hr>
-        <!-- Other blog entries -->
-        <div class = "other-entries">
-         <h2>More posts</h2> 
-         <ul>
-            {% for txt in data%}
-            <ul>{{txt.blog_id}} - {{txt.blog_txt}}  </ul>
-            {% endfor%}
-        </ul>
-
-        <hr>
-        <h2>Add stuff</h2>
-        <form action="/add" method="POST">
-            <div>
-                <label for="blog">What is your blog txt?</label>
-                <input name="blog" id="blog" value="Hi this is my blog text!" />
+      <!-- Blog entries -->
+      <div class="entry">
+        <!-- Blog entry -->
+        <div class="entry">
+          <div class="title-containter">
+            <h3>
+              <b>TITLE HEADING</b>
+            </h3>
+            <h5>Title description,
+              <span class="title description">November 15, 2022</span>
+            </h5>
+          </div>
+          <div class="post-container">
+            <p>
+              <ul>
+                {% for txt in data%}
+                  <ul>{{txt.blog_id}} - {{txt.blog_txt}}
+                  </ul>
+                {% endfor%}
+              </ul>
+            </p>
+            <hr>
+            <!-- Other blog entries -->
+            <div class="other-entries">
+              <hr>
+              <h2>Add post</h2>
+              <form action="/add" method="POST">
+                <div>
+                  <label for="blog">What is your post?</label>
+                  <input name="blog" id="blog" value="Hi this is my blog text!"/>
+                </div>
+                <div>
+                  <button>Send post</button>
+                </div>
+              </form>
+              <hr>
+              <h2>Edit post</h2>
+              <form action="/edit" method="POST">
+                <div>
+                  <label for="blog">Post to edit?</label>
+                  <input name="blog" id="blog" value="1"/>
+                  <label for="edit">Edited post</label>
+                  <input name="edit" id="edit" value=""/>
+                </div>
+                <div>
+                  <button>Send edit</button>
+                </div>
+              </form>
+              <hr>
+              <h2>Delete post</h2>
+              <form action="/delete" method="POST">
+                <div>
+                  <label for="blog">Post to delete?</label>
+                  <input name="blog" id="blog" value="1"/>
+                </div>
+                <div>
+                  <button>delete post</button>
+                </div>
+              </form>
             </div>
-            <div>
-                <button>Send my blog</button>
-            </div>
-        </form>
-        <hr>
-        <h2>Delete stuff</h2>
-                <form action="/delete" method="POST">
-            <div>
-                <label for="blog">Blog to delete?</label>
-                <input name="blog" id="blog" value="1" />
-            </div>
-            <div>
-                <button>delete my blog</button>
-            </div>
-        </form>
+          </div>
         </div>
+      </div>
     </div>
-  </div>
-</div>
-</div>
-</div>
-</div>
-</body>
-        
-    </body>
+  </body>
 </html>
