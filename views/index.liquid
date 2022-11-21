@@ -30,67 +30,52 @@
       </header>
 
       <!-- Blog entries -->
-      <div class="entry">
-        <!-- Blog entry -->
-        <div class="entry">
-          <div class="title-containter">
-            <h3>
-              <b>TITLE HEADING</b>
-            </h3>
-            <h5>Title description,
-              <span class="title description">November 15, 2022</span>
-            </h5>
+      <p>
+        <ul>
+          {% for txt in data%}
+            <ul>{{txt.blog_id}} - {{txt.blog_txt}}
+            </ul>
+          {% endfor%}
+        </ul>
+      </p>
+      <hr>
+      <!-- Other blog entries -->
+      <div class="other-entries">
+        <hr>
+        <h2>Add post</h2>
+        <form action="/add" method="POST">
+          <div>
+            <label for="blog">What is your post?</label>
+            <input name="blog" id="blog" value="Hi this is my blog text!"/>
           </div>
-          <div class="post-container">
-            <p>
-              <ul>
-                {% for txt in data%}
-                  <ul>{{txt.blog_id}} - {{txt.blog_txt}}
-                  </ul>
-                {% endfor%}
-              </ul>
-            </p>
-            <hr>
-            <!-- Other blog entries -->
-            <div class="other-entries">
-              <hr>
-              <h2>Add post</h2>
-              <form action="/add" method="POST">
-                <div>
-                  <label for="blog">What is your post?</label>
-                  <input name="blog" id="blog" value="Hi this is my blog text!"/>
-                </div>
-                <div>
-                  <button>Send post</button>
-                </div>
-              </form>
-              <hr>
-              <h2>Edit post</h2>
-              <form action="/edit" method="POST">
-                <div>
-                  <label for="blog">Post to edit?</label>
-                  <input name="blog" id="blog" value="1"/>
-                  <label for="edit">Edited post</label>
-                  <input name="edit" id="edit" value=""/>
-                </div>
-                <div>
-                  <button>Send edit</button>
-                </div>
-              </form>
-              <hr>
-              <h2>Delete post</h2>
-              <form action="/delete" method="POST">
-                <div>
-                  <label for="blog">Post to delete?</label>
-                  <input name="blog" id="blog" value="1"/>
-                </div>
-                <div>
-                  <button>delete post</button>
-                </div>
-              </form>
-            </div>
+          <div>
+            <button>Send post</button>
           </div>
-        </div>
+        </form>
+        <hr>
+        <h2>Edit post</h2>
+        <form action="/edit" method="POST">
+          <div>
+            <label for="blog">Post to edit?</label>
+            <input name="blog" id="blog" value="1"/>
+            <label for="edit">Edited post</label>
+            <input name="edit" id="edit" value=""/>
+          </div>
+          <div>
+            <button>Send edit</button>
+          </div>
+        </form>
+        <hr>
+        <h2>Delete post</h2>
+        <form action="/delete" method="POST">
+          <div>
+            <label for="blog">Post to delete?</label>
+            <input name="blog" id="blog" value="1"/>
+          </div>
+          <div>
+            <button>delete post</button>
+          </div>
+        </form>
       </div>
     </div>
   </body>
